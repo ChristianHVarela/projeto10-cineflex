@@ -1,7 +1,6 @@
 import { NavBarHigher, ContainerStandart } from "./style"
 
-function NavBar(props){
-    const {children, movieSelected} = props
+function NavBar(){
     return (
         <ContainerStandart>
             <NavBarHigher>

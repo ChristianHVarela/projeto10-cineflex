@@ -1,12 +1,15 @@
-import { useState } from "react";
-import NavBar from "../NavBar/NavBar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Movies from "../../pages/NavBar/Movies/Movies";
+import NavBar from "../../pages/NavBar/NavBar";
 
 function App() {
-  const [movieSelected, setMovieSelected] = useState(null)
   return (
-    <NavBar>
-
-    </NavBar>
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Movies />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
