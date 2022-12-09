@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Movies from "../../pages/NavBar/Movies/Movies";
-import NavBar from "../../pages/NavBar/NavBar";
+import Movies from "../pages/Movies/Movies";
+import NavBar from "../components/NavBar/NavBar";
+import Session from "../pages/Session/Session";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Movies />} />
+        <Route path="/sessoes/:idFilme" element={<Session />} />
       </Routes>
     </BrowserRouter>
   );
