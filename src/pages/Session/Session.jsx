@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
+import { Container, ContainerDay, ContainerTimes, ImagePoster, NavBar } from "./style"
 
 function Session(){
     const {idFilme} = useParams()
@@ -13,10 +14,28 @@ function Session(){
             }).catch((error) => {
                 console.log(error);
             })
-    }, [])
-
+        }, [])
+        
     return (
-        <></>
+        <Container>
+            <p>Selecione o horário</p>
+            {movie !== undefined && movie.days.map((day, index) => {
+                return  <ContainerDay key={index}>
+                            <p>{`${day.weekday} - ${day.date}`}</p>
+                            <ContainerTimes>
+                                {day && day.showtimes.map((time, index) => {
+                                    return <Link key={index} to={`/assentos/${time.id}`}> <button>{time.name}</button> </Link>
+                                })}
+                            </ContainerTimes>
+                        </ContainerDay>
+            })}
+            <NavBar>
+                <div>
+                    <ImagePoster src={movie && movie.posterURL} alt="" />
+                </div>
+                <p>{movie && movie.title}</p>
+            </NavBar>
+        </Container>
     )
 }
 
