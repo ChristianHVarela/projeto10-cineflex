@@ -3,11 +3,14 @@ import { cpfMask } from "../../Utils/mask";
 import { ButtonSubmit, Container, ContainerButton, ContainerContent, Content, Title } from "./style"
 
 function Finale(props){
-    const {success, setSuccess} = props
+    const {success, setSuccess, setPage, setMovie, setSession} = props
     const navigate = useNavigate()
 
     function handleChange(){
         setSuccess({movie : "", data: "", time: "", nome: "", doc: "", assentos: []})
+        setPage(0)
+        setMovie(null)
+        setSession(null)
         navigate("/")
     }
     

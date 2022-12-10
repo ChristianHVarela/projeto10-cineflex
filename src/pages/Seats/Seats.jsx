@@ -6,7 +6,7 @@ import { cpfMask } from "../../Utils/mask"
 import DivSeat from "../../components/DivSeat/DivSeat"
 
 function Seats(props){
-    const {setSuccess} = props
+    const {setSuccess, setPage} = props
     const {idSessao} = useParams()
     const navigate = useNavigate()
     const [session, setSession] = useState(undefined)
@@ -29,6 +29,7 @@ function Seats(props){
             .then((response) => {
                 const seatsForFinale = session.seats.filter((sea) => seats.includes(sea.id))
                 setSuccess({movie : session.movie.title, data: session.day.date, time: session.name, nome: name, doc: cpf, assentos: seatsForFinale})
+                setPage(3)
                 navigate(`/sucesso`)
             }).catch((error) => {
                 console.log(error);

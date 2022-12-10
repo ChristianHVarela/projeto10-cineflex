@@ -1,11 +1,13 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { Container, ContainerDay, ContainerTimes, ImagePoster, NavBar } from "./style"
 
-function Session(){
+function Session(props){
+    const {setPage, setSessionId} = props
     const {idFilme} = useParams()
     const [movie, setMovie] = useState(undefined)
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`)
@@ -15,6 +17,12 @@ function Session(){
                 console.log(error);
             })
         }, [])
+
+    function handleChange(timeId){
+        setSessionId(timeId)
+        setPage(2)
+        navigate(`/assentos/${timeId}`)
+    }
         
     return (
         <Container>
@@ -24,7 +32,7 @@ function Session(){
                             <p>{`${day.weekday} - ${day.date}`}</p>
                             <ContainerTimes>
                                 {day && day.showtimes.map((time, index) => {
-                                    return <Link key={index} to={`/assentos/${time.id}`}> <button data-test="showtime">{time.name}</button> </Link>
+                                    return <button key={index} data-test="showtime" onClick={() => handleChange(time.id)}>{time.name}</button>
                                 })}
                             </ContainerTimes>
                         </ContainerDay>

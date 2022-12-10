@@ -5,7 +5,7 @@ function DivSeat(props){
     const {seat, seats, setSeats} = props
     const [selected, setSelected] = useState(false)
 
-    function handleChange(){
+    function handleChange(available){
         let seatsList = seats
         if (seats.includes(seat.id)){
             let newSeats = seats.filter((sea) => sea !== seat.id)

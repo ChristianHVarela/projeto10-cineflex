@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 export const NavBarHigher = styled.nav`
-    position: fixed;
+    position: absolute;
     width: 100vw;
     height: 67px;
-    top: 0px;
-    left: 0px;
     background: #C3CFD9;
     display: flex;
     justify-content: center;
@@ -25,4 +23,17 @@ export const NavBarHigher = styled.nav`
 
 export const ContainerStandart = styled.div`
     background-color: #000000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+`
+export const ButtonBack = styled.button`
+    background: transparent;
+    position: fixed;
+    left: 0px;
+    top: 4px;
+    width: 60px;
+    height: 60px;
+    border: hidden;
+    display: ${props => props.page === 0 ? "none" : "block"};
 `
