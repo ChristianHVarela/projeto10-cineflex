@@ -41,3 +41,22 @@ export const Movie = styled.div`
         height: 190px;
     }
 `
+export const LoadingScreen = styled.div`
+    display: ${props => props.load ? "none" : "block"};
+    margin: 30px auto;
+    border: 20px solid #eaf0f6;
+    border-radius: 50%;
+    border-top: 20px solid #E8833A;
+    width: 100px;
+    height: 100px;
+    animation: spinner 2s linear infinite;
+    @keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+`

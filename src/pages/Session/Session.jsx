@@ -20,16 +20,16 @@ function Session(){
         <Container>
             <p>Selecione o horário</p>
             {movie !== undefined && movie.days.map((day, index) => {
-                return  <ContainerDay key={index}>
+                return  <ContainerDay key={index} data-test="movie-day">
                             <p>{`${day.weekday} - ${day.date}`}</p>
                             <ContainerTimes>
                                 {day && day.showtimes.map((time, index) => {
-                                    return <Link key={index} to={`/assentos/${time.id}`}> <button>{time.name}</button> </Link>
+                                    return <Link key={index} to={`/assentos/${time.id}`}> <button data-test="showtime">{time.name}</button> </Link>
                                 })}
                             </ContainerTimes>
                         </ContainerDay>
             })}
-            <NavBar>
+            <NavBar data-test="footer">
                 <div>
                     <ImagePoster src={movie && movie.posterURL} alt="" />
                 </div>

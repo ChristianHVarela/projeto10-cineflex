@@ -18,7 +18,7 @@ function DivSeat(props){
     }
 
     return (
-        <Seat selected={selected} disabled={!seat.isAvailable} onClick={() => handleChange()}>{seat.name}</Seat>
+        <Seat data-test="seat" selected={selected} disabled={!seat.isAvailable} onClick={() => handleChange()}>{seat.name}</Seat>
     )
 }
 
